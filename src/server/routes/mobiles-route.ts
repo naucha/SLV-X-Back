@@ -36,4 +36,16 @@ router.get("/mobiles/:id", (req: any, res: any) => {
     });
 });
 
+router.delete("/mobiles/:id", (req: any, res: any) => {
+  const { id } = req.params;
+
+  Mobiles.del(id)
+    .then((mobile: Mobile) => {
+      res.status(204).json(mobile);
+    })
+    .catch((error: Error) => {
+      res.status(404).json({ message: "cannot delete this mobile" });
+    });
+});
+
 module.exports = router;

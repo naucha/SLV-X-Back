@@ -18,4 +18,8 @@ const findById = async (id: number) => {
   return await db.from("mobiles").select("*").where({ id }).first();
 };
 
-module.exports = { add, find, findById };
+const del = async (id: number) => {
+  return await db.from("mobiles").where("id", id).del();
+};
+
+module.exports = { add, find, findById, del };
