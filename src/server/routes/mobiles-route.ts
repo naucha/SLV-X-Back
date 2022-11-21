@@ -1,3 +1,5 @@
+import { Mobile } from "../types/types";
+
 const express = require("express");
 const Mobiles = require("../models/dbHelpers");
 const router = express.Router();
@@ -20,6 +22,18 @@ router.get("/mobiles", (req: any, res: any) => {
     .catch((error: Error) =>
       res.status(500).json({ message: "cannot find mobile" })
     );
+});
+
+router.get("/mobiles/:id", (req: any, res: any) => {
+  const { id } = req.params;
+
+  Mobiles.findById(id)
+    .then((mobile: Mobile) => {
+      res.status(204).json(mobile);
+    })
+    .catch((error: Error) => {
+      res.status(404).json({ message: "cannot find this mobile" });
+    });
 });
 
 module.exports = router;
