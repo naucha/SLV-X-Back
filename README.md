@@ -12,4 +12,5 @@ Made with `Node.js` - `Typescript` - `Express` & using `Sqlite` as a database.
 
 <br>
 - GET .../api/mobiles <br>
-- PUT .../api/mobiles <br>
+- POST .../api/mobiles <br>
+- GET .../api/mobiles/id <br>
