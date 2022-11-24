@@ -14,12 +14,25 @@ const find = async () => {
   return await db("mobiles");
 };
 
-const findById = async (id: number) => {
-  return await db.from("mobiles").select("*").where({ id }).first();
-};
-
 const del = async (id: number) => {
   return await db.from("mobiles").where("id", id).del();
 };
 
-module.exports = { add, find, findById, del };
+const findById = async (id: number) => {
+  return await db.from("mobiles").select("*").where({ id }).first();
+};
+
+const findByIdAndUpdate = async (
+  id: number,
+  brand?: string,
+  model?: string
+) => {
+  return await db
+    .from("mobiles")
+    .select("*")
+    .where({ id })
+    .update({ brand: brand, model: model }, ["brand", "model"])
+    .update("updated_at", db.fn.now());
+};
+
+module.exports = { add, find, findById, del, findByIdAndUpdate };
