@@ -48,4 +48,18 @@ router.delete("/mobiles/:id", (req: any, res: any) => {
     });
 });
 
+router.put("/mobiles/:id", (req: any, res: any) => {
+  const { id, brand, model } = req.body;
+
+  Mobiles.findByIdAndUpdate(id, brand, model)
+    .then((mobile: any) => {
+      res.status(204).json(mobile);
+    })
+    .catch((error: Error) => {
+      res.status(404).json({ message: "cannot update at this moment" });
+    });
+
+  return null;
+});
+
 module.exports = router;
