@@ -35,4 +35,15 @@ const findByIdAndUpdate = async (
     .update("updated_at", db.fn.now());
 };
 
-module.exports = { add, find, findById, del, findByIdAndUpdate };
+const findMobile = async (brand: string, model: string) => {
+  return await db.from("mobiles").where({ brand: brand, model: model }).first();
+};
+
+module.exports = {
+  add,
+  find,
+  findById,
+  del,
+  findByIdAndUpdate,
+  findMobile,
+};
