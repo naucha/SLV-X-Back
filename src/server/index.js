@@ -1,10 +1,12 @@
+require("dotenv").config();
 require("ts-node/register");
+
 const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
 
+const ratingRouter = require("./routes/ratings-route");
 const mobilesRouter = require("./routes/mobiles-route");
-
 const app = express();
 
 const PORT = process.env.PORT || 4002;
@@ -13,6 +15,7 @@ app.use(cors());
 app.use(helmet());
 app.use(express.json());
 
+app.use("/api", ratingRouter);
 app.use("/api", mobilesRouter);
 
 app.use(function (err, req, res, next) {
