@@ -1,7 +1,7 @@
 import { Mobile } from "../types/types";
 
 const express = require("express");
-const Mobiles = require("../models/dbHelpers");
+const Mobiles = require("../models/mobile/mobileService");
 const router = express.Router();
 
 router.post("/mobiles", (req: any, res: any) => {
