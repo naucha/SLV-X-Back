@@ -1,8 +1,7 @@
-import { Mobile } from "../types/types";
+import { Mobile } from "../../types/types";
 
 const knex = require("knex");
-const config = require("../../../knexfile");
-
+const config = require("../../../../knexfile");
 const db = knex(config.development);
 
 const add = async (mobile: Mobile) => {
